@@ -4,7 +4,7 @@ Heroku App Link : http://pbp-website.herokuapp.com/katalog/
 
 ## Request Client, URL’s, Views, Models, dan HTML
 
-![BAGAN](/static/Flowchart.png)
+![BAGAN](/Flowchart.png)
 
 Website berjalan ketika seseorang mengetik URL-nya. Dalam kasus ini, url yang diketik adalah http://pbp-website.herokuapp.com/katalog/ dengan katalog/ merupakan path-nya. URL yang diketik lalu dikirim ke server Django dan server Django akan mengambil urls.py dari django_project untuk menentukan path/langkah berikutnya. Dalam kasus ini, urls.py dalam django_project akan lanjut ke urls.py di aplikasi katalog karena path katalog/. Langkah selanjutnya dari urls.py merupakan pemanggilan fungsi yang terdapat pada views.py, dalam hal ini show_katalog. Fungsi pada file tersebut mengumpulkan data apa saja yang akan nantinya akan dimasukkan ke file HTML lalu ditampilkan pada website. Dalam fungsi pada file views.py, akan di impor dari models.py ketentuan-ketentuan dan perilaku data yang akan digunakan lalu dikirim ke file HTML akhir. File HTML bernama katalog.html ini akan menampilkan kode serta data dari views.py ke website kembali melalui server Django lalu sampai pada user.
 
