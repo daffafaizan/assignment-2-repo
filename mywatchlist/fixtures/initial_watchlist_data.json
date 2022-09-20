@@ -1,0 +1,112 @@
+[
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":1,
+        "fields":{
+            "watched": "Belum",
+            "title": "Mr. Robot",
+            "rating": 0,
+            "release_date": "Juni 24, 2015",
+            "review": "Belum ditonton"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":2,
+        "fields":{
+            "watched": "Sudah",
+            "title": "Interstellar",
+            "rating": 9,
+            "release_date": "November 6, 2014",
+            "review": "Film Sci-Fi terbaik sepanjang masa"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":3,
+        "fields":{
+            "watched": "Belum",
+            "title": "The Social Network",
+            "rating": 0,
+            "release_date": "November 3, 2010",
+            "review": "Belum ditonton"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":4,
+        "fields":{
+            "watched": "Sudah",
+            "title": "Paper Towns",
+            "rating": 9,
+            "release_date": "Agustus 28, 2015",
+            "review": "Nyesek pokoknya"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":5,
+        "fields":{
+            "watched": "Sudah",
+            "title": "DUNE",
+            "rating": 9,
+            "release_date": "Oktober 13, 2021",
+            "review": "Film yang intens dengan kekhasan tersendiri"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":6,
+        "fields":{
+            "watched": "Sudah",
+            "title": "Ready Player One",
+            "rating": 10,
+            "release_date": "March 28, 2018",
+            "review": "Menunjukkan dunia apabila virtual worlds ada"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":7,
+        "fields":{
+            "watched": "Sudah",
+            "title": "Battle: Los Angeles",
+            "rating": 10,
+            "release_date": "March 11, 2011",
+            "review": "Seru karena menunjukkan dunia apabila berkontak dengan mahluk luar angkasa"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":8,
+        "fields":{
+            "watched": "Sudah",
+            "title": "Zero Dark Thirty",
+            "rating": 8,
+            "release_date": "December 19, 2012",
+            "review": "Scene pengeliminasian Osama Bin Laden yang seru"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":9,
+        "fields":{
+            "watched": "Sudah",
+            "title": "FRIENDZONE",
+            "rating": 9,
+            "release_date": "March 20, 2019",
+            "review": "Film yang wholesome tentang pertemanan yang berubah menjadi cinta"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":10,
+        "fields":{
+            "watched": "Sudah",
+            "title": "SuckSeed",
+            "rating": 10,
+            "release_date": "April 20, 2011",
+            "review": "Film masa kecil tentang nge-band"
+        }
+    }
+]
