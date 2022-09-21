@@ -16,6 +16,6 @@ Saya menggunakan command python manage.py startapp mywatchlist di repo tugas 2 p
 
 ## Postman
 
-![html](/HTML.jpg)
-![json](/JSON.jpg)
-![xml](/XML.jpg)
+![html](/mywatchlist/HTML.jpg)
+![json](/mywatchlist/JSON.jpg)
+![xml](/mywatchlist/XML.jpg)
