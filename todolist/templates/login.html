@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+<style>
+    h1 {
+      color:white;
+      font-weight: 500;
+      margin: 0;
+    }
+    h2, h3 {
+      color:white;
+      font-weight: 100;
+    }
+    body {
+      background-color:#8F00FF;
+      font-family: 'Quicksand', sans-serif;
+      text-align: center;
+      margin: 450px
+    }
+    th, td{
+      font-size:15px;
+      color:white;
+    }
+    a {
+      color:white;
+      font-weight: 100;
+    }
+</style>
+<div class = "login">
+
+    <h1 style=font-size:40px>Login</h1>
+    <br>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table style="margin-left:auto;margin-right:auto">
+            <tr>
+                <td>Username: </td>
+                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+            </tr>
+                    
+            <tr>
+                <td>Password: </td>
+                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input class="btn login_btn" type="submit" value="Login"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}     
+    <br>
+    Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
+
+</div>
+
+{% endblock content %}

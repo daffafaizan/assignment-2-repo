@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>{{username}}'s Todolist</title>
+{% endblock meta %}
+
+{% block content %}
+<style>
+    h1 {
+      color:white;
+      font-weight: 500;
+      margin: 0;
+    }
+    h2, h3 {
+      color:white;
+      font-weight: 100;
+    }
+    body {
+      background-color:#30D5C8;
+      font-family: 'Quicksand', sans-serif;
+      margin: 100px 150px;
+    }
+    th, td{
+      font-size:15px;
+      color:white;
+    }
+    a {
+      color:white;
+      font-weight: 100;
+    }
+</style>
+  <h1 style=font-size:100px>Hello {{username}}!</h1>
+  <h2 style=font-size:30px>Here are your tasks.</h2>
+  <table style = "width:60%">
+    <tr>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+    {% comment %} Add the data below this line {% endcomment %}
+    {% for todo in list_todo %}
+      <tr>
+        <td>{{todo.date}}</td>
+        <td>{{todo.title}}</td>
+        <td>{{todo.description}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  <br>
+  <a style="font-size:30px" href="create-task">
+    New tasks?                    
+  </a>
+  <br>
+  <a style="font-size:30px;position:absolute;bottom:100px" href="{% url 'todolist:logout' %}">
+    Logout
+  </a>
+
+{% endblock content %}

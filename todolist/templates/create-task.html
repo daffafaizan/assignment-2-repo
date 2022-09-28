@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Create your task</title>
+{% endblock meta %}
+
+{% block content %}
+<form method="POST" action="">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <td>To do :</td>
+      <td>
+        <input type="text" name="title" placeholder="Title" class="form-control"
+        />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Deskripsi:</td>
+      <td>
+        <input
+          type="text"
+          name="description"
+          placeholder="Description"
+          class="form-control"
+        />
+      </td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td><input class="btn submit_btn" type="submit" value="Submit" /></td>
+    </tr>
+  </table>
+</form>
+{% endblock content %}
