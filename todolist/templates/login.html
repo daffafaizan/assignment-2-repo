@@ -21,7 +21,15 @@
       text-align: center;
       margin: 450px
     }
-    th, td{
+    table {
+      border-collapse: collapse;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+    }
+    th, td {
+      font-weight: normal;
+      text-align: center;
+      padding: 10px;
       font-size:15px;
       color:white;
     }
@@ -61,7 +69,7 @@
             {% endfor %}
         </ul>
     {% endif %}     
-    <br>
+    <br style="margin:6px">
     Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
 
 </div>
