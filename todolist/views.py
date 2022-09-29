@@ -71,3 +71,7 @@ def create_task(request):
         'form': form
     }
     return render(request, 'create-task.html', context)
+
+def delete_task(request, pk):
+    Todolist.objects.get(user=request.user,pk=pk).delete()
+    return HttpResponseRedirect(reverse('todolist:front_page'))

@@ -29,6 +29,24 @@
       color:white;
       font-weight: 100;
     }
+    button {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #33dacc;
+      border: .5px solid #2fcdc0;
+      border-radius: 15px;
+      color: #fff;
+      padding: 15px;
+      box-shadow: 0 0 5px 0 #2bb9ae,
+                    0 0 5px 0 #2bb9ae,
+                    0 0 0px 0 black inset;
+      }
+      br {
+        margin: 10px 0;
+      }
+      .wrapper {
+        display: inline-block;
+      }
+
 </style>
   <h1 style=font-size:100px>Hello {{username}}!</h1>
   <h2 style=font-size:30px>Here are your tasks.</h2>
@@ -37,6 +55,7 @@
       <th>Date</th>
       <th>Title</th>
       <th>Description</th>
+      <th>Delete</th>
     </tr>
     {% comment %} Add the data below this line {% endcomment %}
     {% for todo in list_todo %}
@@ -44,13 +63,18 @@
         <td>{{todo.date}}</td>
         <td>{{todo.title}}</td>
         <td>{{todo.description}}</td>
+        <td><a href="{% url 'todolist:delete_task' todo.pk %}", class="button">Delete</a></td>
       </tr>
     {% endfor %}
   </table>
   <br>
-  <a style="font-size:30px" href="create-task">
-    New tasks?                    
-  </a>
+  <div class="wrapper">
+    <a href="create-task">
+      <button>
+        <h2 style="font-size:20px;font-weight:500;">Add new tasks</h2>
+      </button>                  
+    </a>
+  </div>
   <br>
   <a style="font-size:30px;position:absolute;bottom:100px" href="{% url 'todolist:logout' %}">
     Logout
