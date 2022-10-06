@@ -6,29 +6,89 @@
 
 {% block content %}  
 
+<style>
+  body {
+    background-color: #40E0D0;
+    color: #fefdfa;
+  }
+  table {
+      border-collapse: collapse;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+      height: 100px;
+      text-align: center;
+      margin-bottom: 10px;
+  }
+  td {
+    font-size: 10px;
+    padding: 15px;
+  }
+  h1 {
+    color: rgb(25, 83, 84);
+    height: 40px;
+  }
+  input[type=text], input[type=password] {
+    background-color: transparent;
+    color: rgb(25, 83, 84);
+    border: none;
+    border-bottom: 1px solid rgb(28, 185, 188);
+    width: 40%;
+  }
+  input[type=submit], input[type=button] {
+    background-color: rgb(28, 185, 188);
+    color: #fefdfa;
+    cursor: pointer;
+
+    width: 80%;
+    height: 20px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+
+  }
+  .login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .login#content {
+    color: rgb(25, 83, 84);
+    background-color: rgba(255, 255, 255, 0.725);
+    height: 400px;
+    width: 600px;
+    border-radius: 8px;
+  }
+</style>
 <div class = "login">
+    <div class = "login" id = "content">
+        <h1>Formulir Registrasi</h1>  
     
-    <h1>Formulir Registrasi</h1>  
-
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
-        </form>
-
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
-
-</div>  
+            <form method="POST" >  
+                {% csrf_token %}  
+                <table>  
+                    {{ form.as_table }}  
+                    <tr>  
+                        <td></td>
+                        <td><input type="submit" name="submit" value="Daftar"/></td>  
+                    </tr>  
+                </table>  
+            </form>
+    
+        {% if messages %}  
+            <ul>   
+                {% for message in messages %}  
+                    <li>{{ message }}</li>  
+                    {% endfor %}  
+            </ul>   
+        {% endif %}
+    
+    </div> 
+</div>
 
 {% endblock content %}

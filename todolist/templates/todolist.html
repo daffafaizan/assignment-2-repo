@@ -7,83 +7,132 @@
 
 {% block content %}
 <style>
-    h1 {
-      color:white;
-      font-weight: 500;
-      margin: 0;
-    }
-    h2, h3 {
-      color:white;
-      font-weight: 100;
-    }
-    body {
-      background-color:#30D5C8;
-      font-family: 'Quicksand', sans-serif;
-      margin: 100px 150px;
-    }
-    table, th, td {
-      border: 1px solid white;
-      border-collapse: collapse;
-      font-size:15px;
-      color:white;
-    }
-    td {
-      font-weight: normal;
-      text-align: center;
-    }
-    a {
-      color:white;
-      font-weight: 100;
-    }
-    button {
-      font-family: 'Quicksand', sans-serif;
-      background-color: #33dacc;
-      border: .5px solid #2fcdc0;
-      border-radius: 15px;
-      color: #fff;
-      padding: 15px;
-      box-shadow: 0 0 5px 0 #2bb9ae,
-                    0 0 5px 0 #2bb9ae,
-                    0 0 0px 0 black inset;
-      }
-      br {
-        margin: 10px 0;
-      }
-      .wrapper {
-        display: inline-block;
-      }
+  * {
+    box-sizing: border-box;
+  }
+    /* Float four columns side by side */
+  .column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+  }
+  /* Remove extra left and right margins, due to padding */
+  .row {margin: 0 -5px;}
 
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+    /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 16px;
+    width: 150px;
+    text-align: center;
+    background-color: #c83032;
+  }
+
+  body {
+    background-color: #cc3336;
+    color: #fefdfa;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  h3 {
+    font-weight: normal;
+  }
+  a {
+    color: rgb(40, 59, 229);
+  }
+  button {
+    background-color: #c83032;
+    color: #fefdfa;
+
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+    margin-top: 15px;
+    padding: 8px;
+    width: 200px;
+  }
+  .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper#content {
+  }
+  .content {
+
+  }
+  .content#button {
+    padding: 15px;
+  }
+  .content#title {
+
+  }
+  .content#subtitle{
+    padding-bottom: 15px;
+  }
+  .content#logout {
+    padding-top: 10px;
+  }
 </style>
-  <h1 style=font-size:100px>Hello {{username}}!</h1>
-  <h2 style=font-size:30px>Here are your tasks.</h2>
-  <table style = "width:60%">
-    <tr>
-      <th>Date</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Delete</th>
-    </tr>
-    {% comment %} Add the data below this line {% endcomment %}
-    {% for todo in list_todo %}
-      <tr>
-        <td>{{todo.date}}</td>
-        <td>{{todo.title}}</td>
-        <td>{{todo.description}}</td>
-        <td><a href="{% url 'todolist:delete_task' todo.pk %}", class="button">Delete</a></td>
-      </tr>
-    {% endfor %}
-  </table>
-  <br>
-  <div class="wrapper">
-    <a href="create-task">
-      <button>
-        <h2 style="font-size:20px;font-weight:500;">Add new tasks</h2>
-      </button>                  
-    </a>
+<div class = "wrapper">
+    <div class = "content" id = "subtitle">
+      <h1>A simple todolist.</h1>
+      <h3>hi {{username}} 👋</h3>
+    </div>
+    <div>
+      <div class = "row">
+        {% comment %} Add the data below this line {% endcomment %}
+        {% for todo in list_todo %}
+        <div class = "column">
+          <div class = "card">
+            <h3>{{todo.title}}</h3>
+            <p>{{todo.description}}</p>
+            <p>{{todo.date}}</p>
+            <a href="{% url 'todolist:delete_task' todo.pk %}", class="button">Delete</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class = "content" id = "button">
+      <a href="create-task">
+        <button>
+          <h2>Add new tasks</h2>
+        </button>                  
+      </a>
+    </div>
+    <div class = "content" id = "logout">
+      Are you done?
+      <a href="{% url 'todolist:logout' %}">
+        Logout
+      </a>
+    </div>
   </div>
-  <br>
-  <a style="font-size:30px;position:absolute;bottom:100px" href="{% url 'todolist:logout' %}">
-    Logout
-  </a>
+</div>
 
 {% endblock content %}

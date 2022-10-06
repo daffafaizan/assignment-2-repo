@@ -2,18 +2,21 @@
 
 Heroku App Link : http://pbp-website.herokuapp.com/todolist/
 
-## Apa Kegunaan {% csrf_token %} pada <form>? Jika tidak ada?
+## Perbedaan Inline, Internal, dan External CSS
 
-CSRF atau Cross Site Request Forgery merupakan serangan yang dilakukan dengan mengelabui user atau website dalam melakukan hal yang tidak user atau website inginkan. Salah satu solusi agar ini tidak terjadi adalah dengan menggunakan csrf token. Server akan memvalidasi apakah token benar atau tidak sebelum mengembalikan respons. Apabila tidak ada csrf_token pada form, django tidak akan menjalankan kode karena menggunakan csrf_token merupakan suatu kebutuhan pengamanan.
+Internal CSS adalah kode CSS yang ditulis di dalam tag <style> dan dituliskan di bagian atas (header) file HTML. Sedangkan, External CSS adalah kode CSS yang ditulis pisah dengan kode HTML yang ditulis di sebuah file khusus yang berekstensi .css. File external ini biasanya diletakkan setelah bagian <head> pada halaman. Inline CSS merupakan kode CSS yang ditulis langsung pada atribut elemen HTML. 
+Source: https://www.niagahoster.co.id/blog/perbedaan-internal-external-dan-inline-css/
 
-## Apakah kita dapat membuat elemen <form> secara manual?
+## Tag HTML5
 
-Ya, dengan tag input. Kita isi dengan name, value, dan type yang kita inginkan.
+Terdapat 9 tag html dasar. <html>...</html> merupakan tag root yang dibutuhkan untuk membuat laman web. <head>...</head> berisi informasi mengenai laman. Head berisi title, link, meta, script, dan lainnya. <title>...</title> berisi judul laman. <body>...</body> merupakan konten yang muncul setelah tag <head>. <h1>...</h1> merupakan salah satu jenis tag yang merupakan teks agar laman lebih mudah dibaca. Terdapat h1, h2, h3, sampai dengan h6. <p>...</p> berfungsi untuk membuat paragraf teks. <a>...</a> berfungsi untuk membuat link kepada konten lain. <img> menyediakan tempat untuk memasukkan gambar.<div>...</div> menambahkan struktur pada laman.
+Source: https://www.elated.com/first-10-html-tags/
 
-## Jelaskan proses alur data dari submisi, penyimpanan data, hingga muncul pada template!
+## Tipe-tipe CSS Selector
 
-User akan mengisi data yang ia inginkan pada slot yang tersedia. Setelah menekan tombol submit, data akan di POST ke server. Agar muncul pada template, function pada views akan terpanggil menggunakan render dan di-output pada file HTML yang ingin data tersebut ditampilkan.
+CSS selector digunakan untuk memilih konten ataupun elemen yang ingin di-style. Terdapat berbagai tipe selector dalam CSS. Beberapa diantaranya seperti CSS Element Selector, CSS ID Selector, CSS Class Selector, CSS Universal Selector, dan CSS Group Selector.
+Source: https://www.javatpoint.com/css-selector
 
 ## Pengimplementasian Checklist
 
-Pertama, buatlah app baru dengan python manage.py startapp todolist. Lalu, tambahkan path serta url yang bersesuaian pada direktori project_django dan juga urls.py pada direktori todolist. Setelah itu, buat class baru pada models.py dan buatlah atribut baru, yaitu user, date, title, dan description. Buat juga fungsi baru pada views.py mengenai registrasi, login, dan logout. Buat juga tombol untuk membuat task baru. Tombol ini akan me-redirect kita ke laman yang dapat menerima input kita untuk task baru. Input kita akan disubmit dalam bentuk form yang akan disave di halaman utama todolist, yaitu pada path todolist. Lalu, dengan menggunakan for loop, kita tampilkan data. Terakhir, kita makemigrations, migrate, lalu lakukan tiga mantra git, yaitu add, commit, dan push.
+Dengan menggunakan CSS, kita dapat meng-customize laman kita. Mudahnya, kita menambahkan tag <style>...</style> pada awal setiap html lalu menuliskan style dari selector dari tag yang ingin kita customize.

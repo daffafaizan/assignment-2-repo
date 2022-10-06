@@ -7,21 +7,24 @@
 
 {% block content %}
 <style>
-    h1 {
-      color:white;
-      font-weight: 500;
-      margin: 0;
-    }
-    h2, h3 {
-      color:white;
-      font-weight: 100;
-    }
-    body {
-      background-color:#ff0d7b;
-      font-family: 'Quicksand', sans-serif;
-      margin: 100px 150px;
-    }
-</style>
-  <h1 style=font-size:100px>Hello everyone!</h1>
-  <h2 style=font-size:30px>This is my assignment website</h2>
+  body {
+    background-color: #ff0d7b;
+  }
+  div.content {
+    margin: 50px;
+  }
+  div#title {
+    color: white;
+    font-size: 30px;
+  }
+  div#subtitle {
+    color: white;
+    font-size: 20px;
+  }
+  </style>
+
+<div class = "content" id = "title">
+  <h1>Hello everyone!</h1>
+</div>
+<div class = "content" id = "subtitle">This is my assignment website</div>
 {% endblock content %}
