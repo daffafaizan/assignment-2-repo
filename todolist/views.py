@@ -6,11 +6,12 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import datetime
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from todolist.models import Todolist
 from todolist.forms import CreateTaskForm
 from django.contrib.auth.models import User
+from django.core import serializers
 
 @login_required(login_url='/todolist/login/')
 def front_page(request):
@@ -74,4 +75,8 @@ def create_task(request):
 
 def delete_task(request, pk):
     Todolist.objects.get(user=request.user,pk=pk).delete()
-    return HttpResponseRedirect(reverse('todolist:front_page'))
+    return HttpResponseRedirect(reverse('todolist:front_page'))\
+        
+def get_todolist_json(request):
+    wishlist_item = Todolist.objects.all()
+    return HttpResponse(serializers.serialize('json', wishlist_item))
