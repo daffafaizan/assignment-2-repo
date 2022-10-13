@@ -101,70 +101,107 @@
     padding-top: 10px;
   }
 </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+  async function get_json(){
+      return fetch("{% url 'todolist:get_todolist_json' %}").then((res) => res.json())
+    }
+
+  async function refresh_data(){
+    document.getElementById("column_ajax").innerHTML = ""
+    const todolist = await get_json()
+    let htmlString = ``
+    todolist.forEach(todo=> {
+      htmlString+=`\n
+      <div class = "column">
+        <div class = "card">
+          <h3>${todo.fields.title}</h3>
+          <p>${todo.fields.description}</p>
+          <p>${todo.fields.date}</p>
+        </div>
+      </div>
+      `
+    });
+    document.getElementById("column_ajax").innerHTML = htmlString
+  }
+
+  async function add_task() {
+    fetch("{% url 'todolist:create_task_ajax' %}", {
+          method: "POST",
+          body: new FormData(document.querySelector('#form_task'))
+      }).then(refresh_data)
+    return false
+  }
+
+  refresh_data()
+</script>
+
 <div class = "wrapper">
 
-    <div class = "content" id = "subtitle">
-      <h1>A simple todolist.</h1>
-      <h3>hi {{username}} 👋</h3>
-    </div>
+  <div class = "content" id = "subtitle">
+    <h1>A simple todolist.</h1>
+    <h3>hi {{username}} 👋</h3>
+  </div>
 
-    <div>
-      <div class = "row">
-        {% comment %} Add the data below this line {% endcomment %}
-        {% for todo in list_todo %}
-        <div class = "column">
-          <div class = "card">
-            <h3>{{todo.title}}</h3>
-            <p>{{todo.description}}</p>
-            <p>{{todo.date}}</p>
-            <a href="{% url 'todolist:delete_task' todo.pk %}", class="button">Delete</a>
+  <div class = "row">
+    {% comment %} Add the data below this line {% endcomment %}
+    {% for todo in list_todo %}
+    <div class = "column">
+      <div class = "card">
+        <h3>{{todo.title}}</h3>
+        <p>{{todo.description}}</p>
+        <p>{{todo.date}}</p>
+        <a href="{% url 'todolist:delete_task' todo.pk %}", class="button">Delete</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div id="column_ajax"></div>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add new tasks
+  </button>
+
+  <div class = "content" id = "logout">
+    Are you done?
+    <a href="{% url 'todolist:logout' %}">
+      Logout
+    </a>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="form_task">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label" style="color:black">Title:</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Add your task!">
           </div>
-        </div>
-        {% endfor %}
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label" style="color:black">Description:</label>
+            <textarea class="form-control" id="description" name="description" placeholder="Add the description!"></textarea>
+          </div>
+        </form>
       </div>
-    </div>
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Add new tasks
-    </button>
-
-    <div class = "content" id = "logout">
-      Are you done?
-      <a href="{% url 'todolist:logout' %}">
-        Logout
-      </a>
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form id="form_task">
-            {% csrf_token %}
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label" style="color:black">Title:</label>
-              <input type="text" class="form-control" id="title" name="title" placeholder="Add your task!">
-            </div>
-            <div class="mb-3">
-              <label for="message-text" class="col-form-label" style="color:black">Description:</label>
-              <textarea class="form-control" id="description" name="description" placeholder="Add the description!"></textarea>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Create task</button>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="add_task()" data-bs-dismiss="modal">Create task</button>
       </div>
     </div>
   </div>
+
 </div>
 
 {% endblock content %}

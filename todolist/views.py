@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import datetime
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
 from django.urls import reverse
 from todolist.models import Todolist
 from todolist.forms import CreateTaskForm
@@ -57,6 +57,7 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
+@login_required(login_url='/todolist/login/')
 def create_task(request):
     form = CreateTaskForm()
 
@@ -73,9 +74,22 @@ def create_task(request):
     }
     return render(request, 'create-task.html', context)
 
+@login_required(login_url='/todolist/login/')
+def create_task_ajax(request):
+    if request.method == 'POST':
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+
+        todolist = Todolist(title=title, description=description, user=request.user)
+        todolist.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
 def delete_task(request, pk):
     Todolist.objects.get(user=request.user,pk=pk).delete()
-    return HttpResponseRedirect(reverse('todolist:front_page'))\
+    return HttpResponseRedirect(reverse('todolist:front_page'))
         
 def get_todolist_json(request):
     todolist_item = Todolist.objects.filter(user=request.user)
