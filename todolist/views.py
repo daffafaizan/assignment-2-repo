@@ -78,5 +78,5 @@ def delete_task(request, pk):
     return HttpResponseRedirect(reverse('todolist:front_page'))\
         
 def get_todolist_json(request):
-    wishlist_item = Todolist.objects.all()
-    return HttpResponse(serializers.serialize('json', wishlist_item))
+    todolist_item = Todolist.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', todolist_item))
