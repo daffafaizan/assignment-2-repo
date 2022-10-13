@@ -42,7 +42,6 @@
     text-align: center;
     background-color: #c83032;
   }
-
   body {
     background-color: #cc3336;
     color: #fefdfa;
@@ -57,6 +56,9 @@
     color: rgb(40, 59, 229);
   }
   button {
+    margin-top: 15px;
+  }
+  .button#test{
     background-color: #c83032;
     color: #fefdfa;
 
@@ -100,10 +102,12 @@
   }
 </style>
 <div class = "wrapper">
+
     <div class = "content" id = "subtitle">
       <h1>A simple todolist.</h1>
       <h3>hi {{username}} 👋</h3>
     </div>
+
     <div>
       <div class = "row">
         {% comment %} Add the data below this line {% endcomment %}
@@ -119,18 +123,46 @@
         {% endfor %}
       </div>
     </div>
-    <div class = "content" id = "button">
-      <a href="create-task">
-        <button>
-          <h2>Add new tasks</h2>
-        </button>                  
-      </a>
-    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add new tasks
+    </button>
+
     <div class = "content" id = "logout">
       Are you done?
       <a href="{% url 'todolist:logout' %}">
         Logout
       </a>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form_task">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label" style="color:black">Title:</label>
+              <input type="text" class="form-control" id="title" name="title" placeholder="Add your task!">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label" style="color:black">Description:</label>
+              <textarea class="form-control" id="description" name="description" placeholder="Add the description!"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Create task</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
