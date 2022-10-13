@@ -112,9 +112,9 @@
   async function refresh_data(){
     document.getElementById("column_ajax").innerHTML = ""
     const todolist = await get_json()
-    let htmlString = ``
+    let htmlString = `<div class = "row">`
     todolist.forEach(todo=> {
-      htmlString+=`\n
+      htmlString +=`\n
       <div class = "column">
         <div class = "card">
           <h3>${todo.fields.title}</h3>
@@ -124,6 +124,7 @@
       </div>
       `
     });
+    htmlString += `</div>`
     document.getElementById("column_ajax").innerHTML = htmlString
   }
 
