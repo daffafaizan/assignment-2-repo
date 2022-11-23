@@ -21,7 +21,11 @@
     {% comment %} Add the data below this line {% endcomment %}
     {% for mywatchlist in list_mywatchlist %}
       <tr>
-        <td>{{mywatchlist.watched}}</td>
+        {% if mywatchlist.watched %}
+        <td>Sudah</td>
+        {% else %}
+        <td>Belum</td>
+        {% endif %}
         <td>{{mywatchlist.title}}</td>
         <td>{{mywatchlist.rating}}</td>
         <td>{{mywatchlist.release_date}}</td>

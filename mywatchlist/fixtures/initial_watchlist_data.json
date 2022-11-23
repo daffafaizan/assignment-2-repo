@@ -3,7 +3,7 @@
         "model":"mywatchlist.mywatchlist",
         "pk":1,
         "fields":{
-            "watched": "Belum",
+            "watched": false,
             "title": "Mr. Robot",
             "rating": 0,
             "release_date": "Juni 24, 2015",
@@ -14,9 +14,9 @@
         "model":"mywatchlist.mywatchlist",
         "pk":2,
         "fields":{
-            "watched": "Sudah",
+            "watched": true,
             "title": "Interstellar",
-            "rating": 4.5,
+            "rating": 4,
             "release_date": "November 6, 2014",
             "review": "Film Sci-Fi terbaik sepanjang masa"
         }
@@ -25,7 +25,7 @@
         "model":"mywatchlist.mywatchlist",
         "pk":3,
         "fields":{
-            "watched": "Belum",
+            "watched": false,
             "title": "The Social Network",
             "rating": 0,
             "release_date": "November 3, 2010",
@@ -36,9 +36,9 @@
         "model":"mywatchlist.mywatchlist",
         "pk":4,
         "fields":{
-            "watched": "Sudah",
+            "watched": true,
             "title": "Paper Towns",
-            "rating": 4.5,
+            "rating": 4,
             "release_date": "Agustus 28, 2015",
             "review": "Nyesek pokoknya"
         }
@@ -47,9 +47,9 @@
         "model":"mywatchlist.mywatchlist",
         "pk":5,
         "fields":{
-            "watched": "Sudah",
+            "watched": true,
             "title": "DUNE",
-            "rating": 4.5,
+            "rating": 4,
             "release_date": "Oktober 13, 2021",
             "review": "Film yang intens dengan kekhasan tersendiri"
         }
@@ -58,7 +58,7 @@
         "model":"mywatchlist.mywatchlist",
         "pk":6,
         "fields":{
-            "watched": "Sudah",
+            "watched": true,
             "title": "Ready Player One",
             "rating": 5,
             "release_date": "March 28, 2018",
@@ -69,7 +69,7 @@
         "model":"mywatchlist.mywatchlist",
         "pk":7,
         "fields":{
-            "watched": "Sudah",
+            "watched": true,
             "title": "Battle: Los Angeles",
             "rating": 5,
             "release_date": "March 11, 2011",
@@ -80,7 +80,7 @@
         "model":"mywatchlist.mywatchlist",
         "pk":8,
         "fields":{
-            "watched": "Sudah",
+            "watched": true,
             "title": "Zero Dark Thirty",
             "rating": 4,
             "release_date": "December 19, 2012",
@@ -91,9 +91,9 @@
         "model":"mywatchlist.mywatchlist",
         "pk":9,
         "fields":{
-            "watched": "Sudah",
+            "watched": true,
             "title": "FRIENDZONE",
-            "rating": 4.5,
+            "rating": 4,
             "release_date": "March 20, 2019",
             "review": "Film yang wholesome tentang pertemanan yang berubah menjadi cinta"
         }
@@ -102,7 +102,7 @@
         "model":"mywatchlist.mywatchlist",
         "pk":10,
         "fields":{
-            "watched": "Sudah",
+            "watched": true,
             "title": "SuckSeed",
             "rating": 5,
             "release_date": "April 20, 2011",
